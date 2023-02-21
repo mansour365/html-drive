@@ -19,42 +19,34 @@
 <body>
 
   <!-- Header -->
-  <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Online Journal</h1>
-    <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Sign into Google Drive Account</button>
+  <header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Notes</h1>
   </header>
 
 
+  <main>
+    <br>
+    <h1>Entries</h1> <br><br>
 
+    <!--List section-->
+    <ul>
+    </ul>
 
-
-
-
-
-
-
-  <!-- First Grid -->
-  <div class="w3-row-padding w3-padding-64 w3-container">
-    <div class="w3-content">
-      <div class="w3-twothird">
-        <h1>Dreams</h1>
-        <h5 class="w3-padding-32">Uses google drive</h5>
-
-        <p class="w3-text-grey">Store your journals on google drive. Contents are encrypted.</p>
-      </div>
-
-      <div class="w3-third w3-center">
-        <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
-      </div>
-    </div>
-  </div>
-
-  
-
-  <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-      <h1 class="w3-margin w3-xlarge">We take privacy seriously</h1>
-  </div>
-
+    <section class="new-note">
+      <h2>Enter a new note</h2>
+      <form>
+        <div>
+          <label for="title">Note title</label>   <input id="title" type="text" required>
+        </div>
+        <div>
+          <label for="body">Note text</label>   <input id="body" type="text" required>
+        </div>
+        <div>
+          <button>Create new note</button>
+        </div>
+      </form>
+    </section>
+  </main>
   <!-- Footer -->
   <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
     <div class="w3-xlarge w3-padding-32">
