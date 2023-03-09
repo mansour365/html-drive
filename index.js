@@ -59,10 +59,11 @@ form.addEventListener("submit", addData);
 function addData(e){
     //prevent default, we don't want the for to submit in conventional way (this would cause page refresh and spoil the experience)
     e.preventDefault();
-    //grab values entered into the form fields and store them in an object ready for being inserted into the DB
+    //grab values entered into the form fields and store them in an object (representing a record) ready for being inserted into the DB
     const newItem = {title: titleInput.value, body: bodyInput.value};
 
     //open a read/write db transaction on the notes_os object store, ready for adding the data
+    //This transaction object allows us to access the object store, so we can do something to it (like add a record)
     const transaction = db.transaction(["notes_os"], "readwrite");
 
     //call an object store that's already been added to the database (access object store using objectStore() method, save result in objectStore variable)
@@ -74,7 +75,7 @@ function addData(e){
 
     //Event handlers to run at critical points in the lifecycle
     addRequest.addEventListener("success", () => {
-        //clear the form, ready for adding the next entry, when the request has succeeded
+        //when the request has succeeded, clear the form, ready for adding the next entry, 
         titleInput.value = "";
         bodyInput.value = "";
     });
@@ -89,4 +90,16 @@ function addData(e){
     transaction.addEventListener("error", () => 
         console.log("Transaction not opened due to error")
     );
+}
+
+//Function to display the data in the db
+function displayData(){
+    //WE empty the contents of the list element each time the display is updated
+    //if we didnt do this, we'd get duplicates listed each time a new note is added
+    while(list.firstChild){
+        list.removeChild(list.firstChild);
+    }
+
+    //Open our object store and then get a cursor - which iterates through all the different data items in the store
+    const objectStore = db.transaction("notes_os").objectStore("notes_os");
 }
